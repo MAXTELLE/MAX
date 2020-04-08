@@ -1,0 +1,137 @@
+#!/usr/bin/env bash 
+
+--[[
+#      ▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇                
+#      ▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇
+#      ▇▇          ▇ @Hskh56   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇
+#      ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @Hskh56
+#      ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @Hskh56  ▇▄                 ▇▇                 ▇▇
+#      ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source @Hskh56
+#---------------------------------------------------------------------
+cd $(cd $(dirname $0); pwd)
+Day_now=$(date +%F)
+RED='\033[0;31m'
+SMAY='\033[0;36m'
+GREEN='\033[0;32m'
+Yellow='\033[0;33m'
+LSAMAY='\033[01;49m'
+WHITB='\033[01;90m'
+WHITEC='\033[01;91m'
+CNIL='\033[0m'
+
+Version=`lsb_release -rs | cut -f1 -d"."`
+
+if [ "$Version" == "18" ];then
+echo -e "${SMAY}\n"
+echo -e " ▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇"
+echo -e " ▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇"
+echo -e " ▇▇          ▇ @Hskh56   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇"
+echo -e " ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @Hskh56"
+echo -e " ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @Hskh56  ▇▄                 ▇▇                 ▇▇"
+echo -e " ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source @Hskh56"
+echo -e " ----------------------------------------------------------------------"
+echo -e "${CNIL}"
+echo -e "${RED}| للاسف لايمكنك تنصيب السورس ع نظام اوبنتو {${Version}} يجب ان يكون على اصدار  اقل مثلا  ${SMAY}14 او 16
+${CNIL}";
+echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source MAX 
+${CNIL}";
+exit;
+fi
+
+echo -e "${SMAY}\n"
+echo -e " ▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇"
+echo -e " ▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇"
+echo -e " ▇▇          ▇ @Hskh56   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇"
+echo -e " ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @Hskh56"
+echo -e " ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @Hskh56  ▇▄                 ▇▇                 ▇▇"
+echo -e " ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source @Hskh56"
+echo -e " ----------------------------------------------------------------------"
+echo -e "${CNIL}"
+
+memory_free=`awk '/^Mem/ {print $4}' <(free -m)`
+
+if [ "$memory_free" -le 60 ]; then
+echo -e "${RED}¦
+¦ CAUTION:${WHITEC} Your RAM size is less than 60MB.
+¦ NOW you can not install the SOURCE MAX. \n
+¦${WHITB}¦ YOUR RAM FREE SIZE IS : ${SMAY}${memory_free}MB${CNIL}"
+exit ;
+fi
+
+
+PKG_OK=`/usr/bin/dpkg-query --show --showformat='${db:Status-Status}\n' 'redis-server'`
+if [ "${PKG_OK}" == "installed" ]; then
+if [ "$1" == "-R" ] ; then
+GET_INSTALL="NO"
+else
+GET_INSTALL=$(redis-cli get MAX_INSTALL)
+fi
+if [ "${GET_INSTALL}" == "Yes" ]; then
+echo -e "
+${SMAY}>> ${LSAMAY}Source MAX${SMAY} is Already Installed ^_^ .\n${CNIL}"
+sudo luarocks install luautf8
+sudo chmod +x ./run
+sudo chmod +x ./TG
+sudo ./run
+exit;
+fi 
+fi
+
+echo -e "${WHITB}\n¦ installing source ... \n\n\n\n${CNIL}"
+sudo apt-get update -y
+sudo apt-get upgrade -y
+echo -e "\x1B[01;90m\n¦ software-properties-common installing ... \n\x1B[0m"
+sudo apt-get install software-properties-common -y
+echo -e "\x1B[01;90m\n¦ ubuntu-toolchain installing ...\n \x1B[0m"
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+# BY _ [ MAX >> @Hskh56 | KAIDO >> @uop70 ]
+echo -e "\x1B[01;90m\n¦ install luarocks v2.4.3 ... \n\x1B[0m"
+sudo  wget https://luarocks.org/releases/luarocks-2.4.3.tar.gz
+sudo  tar zxpf luarocks-2.4.3.tar.gz
+cd luarocks-2.4.3
+echo -e "\x1B[01;90m\n¦ ./configure AND make bootstrap ...\n \x1B[0m"
+./configure; sudo make bootstrap
+sudo luarocks install luasocket
+echo -e "\x1B[01;90m\n¦ luasocket installing ...\n \x1B[0m"
+sudo luarocks install luasec
+sudo luarocks install luautf8
+echo -e "\x1B[01;90m\n¦ redis-lua installing ... \n\x1B[0m"
+sudo luarocks install redis-lua
+echo -e "\x1B[01;90m\n¦ lua-cjson installing ... \n\x1B[0m"
+sudo  luarocks remove lua-cjson2
+sudo  luarocks remove lua-cjson
+sudo  apt-get install lua-cjson
+echo -e "\x1B[01;90m\n¦ Lua-cURL installing ...\n \x1B[0m"
+sudo luarocks install Lua-cURL
+echo -e "\x1B[01;90m\n¦ redis-server start ...\n \x1B[0m"
+sudo service redis-server start
+sudo apt-get update -y
+echo -e "\x1B[01;90m\n¦  g++-4.7 -y c++-4.7 installing ... \n\x1B[0m"
+sudo apt-get install g++-4.7 -y c++-4.7
+echo -e "\x1B[01;90m\n¦ luasocket installing ...\n \x1B[0m"
+sudo apt-get install libreadline-dev -y libconfig-dev -y libssl-dev -y lua5.2 -y liblua5.2-dev -y lua-socket -y lua-sec -y lua-expat -y libevent-dev -y make unzip git redis-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y curl -y htop -y
+echo -e "\x1B[01;90m\n¦ screen installing ... \n\x1B[0m"
+sudo apt-get install screen -y
+echo -e "\x1B[01;90m\n¦ libstdc++6 installing ... \n\x1B[0m"
+sudo apt-get install libstdc++6 -y
+echo -e "\x1B[01;90m\n¦ lua-lgi installing ... \n\x1B[0m"
+sudo apt-get install lua-lgi -y
+echo -e "\x1B[01;90m\n¦ libnotify installing ... \n\x1B[0m"
+sudo apt-get install libnotify-dev -y
+cd ..
+echo -e "\x1B[01;90m\n¦ Remove luarocks ... \n\x1B[0m"
+sudo rm -fr ./luarocks-2.4.3
+sudo rm -fr ./luarocks-2.4.3.tar.gz
+echo -e "${WHITB}\n¦ Convert TimeZone To Asia/Baghdad  ... \n${CNIL}"
+sudo timedatectl set-timezone Asia/Baghdad
+sudo chmod +x TG
+sudo chmod +x run
+chmod +x ./run
+echo -e "\n
+${SMAY}>> Installation ${LSAMAY}Source MAX${SMAY} Completed ^_^ .\n
+Now I Have Information For Your Bot  \n
+1- Enter Token Your Bot .
+2- Enter Your UserName Sudo .
+3- And End Press Enter To Run Source MAX .\n\n
+${RED}Note:${Yellow} Send \"/start\"${SMAY} To Your Bot For Show All Commands.${CNIL}"
+./run

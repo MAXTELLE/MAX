@@ -2382,8 +2382,8 @@ return [[
 ●ـ▬ـ▬ஜ۩۞۩ஜ▬ـ▬ـ●
 📡╿[قناة السورس](t.me/uop70)
 ⚜│[قناة شروحات السورس](t.me/uop60)
-🤖│[بوت تواصل](t.me/MXUBOT)
-👨🏻‍✈️╽[مطور السـورس](t.me/auuuvu)
+🤖│[بوت تواصل](t.me/TUaSiLMaXbot)
+👨🏻‍✈️╽[مطور السـورس](t.me/Hskh56)
 ●ـ▬ــ▬ஜ۩۞۩ஜ▬ـ▬ـ●
 
 ]]
@@ -3986,10 +3986,8 @@ else
 return sendMsg(msg.chat_id_,msg.id_,"📌 انجب ما اتفل عيب 😼🙌🏿") 
 end
 elseif Text== "تف" then return sendMsg(msg.chat_id_,msg.id_,"عيب ابني/بتي اتفل/ي اكبر منها شوية 😌😹")
-elseif Text== "كايدو" then return sendMsg(msg.chat_id_,msg.id_,"[مالـك السورس 😍](t.me/kKAIDO")
-elseif Text== "كارا" then return sendMsg(msg.chat_id_,msg.id_,"[ مطور سورس ماكس 😍](t.me/Uop90")
-elseif Text== "الشيخ" then return sendMsg(msg.chat_id_,msg.id_,"[مطور الردود والكلايش 😍](t.me/ali1b")
-elseif Text== "فهاوه" then return sendMsg(msg.chat_id_,msg.id_,"[مطور كلايش 😍](t.me/O7MII")
+elseif Text== "حسن" then return sendMsg(msg.chat_id_,msg.id_,"[مالـك السورس 😍](t.me/Hskh56")
+elseif Text== "حسن العراقي" then return sendMsg(msg.chat_id_,msg.id_,"[ مطور سورس ماكس 😍](t.me/Hskh56")
 elseif Text== "تمام" then return sendMsg(msg.chat_id_,msg.id_,"دومك بخير حياتي 😘")
 elseif Text== "صاكه"  then return sendMsg(msg.chat_id_,msg.id_,"اووويلي يابه 😍❤️ دزلي صورتهه 🐸💔")
 elseif Text== "وينك"  then return sendMsg(msg.chat_id_,msg.id_,"دور بكلبك وتلكاني 😍😍❤️")

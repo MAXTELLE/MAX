@@ -1707,7 +1707,7 @@ end
 
 if cmd == "promote" then
 if UserID == our_id then 
-return sendMsg(ChatID,MsgID,"🏌‍♂*│*عذرا لا يمكنني رفع نفسي \n📛") 
+return sendMsg(ChatID,MsgID,"🏌‍♂*│*اهبل انت تبيني ارفع نفسي ؟ \n📛") 
 elseif data.type_.ID == "ChannelChatInfo" then 
 return sendMsg(ChatID,MsgID,"🏌‍♂*│*عذرا لا يمكن رفع قناة في البوت \n📛") 
 end
@@ -2182,7 +2182,7 @@ list_settings = "*👮🏾*` اعدادات المجموعه :` \n"
 .."\n💭│الدردشه «» "..(redis:get(max..'mute_text'..msg.chat_id_) or 'false')
 .."\n◽️│الانلاين «» "..(redis:get(max..'mute_inline'..msg.chat_id_) or 'false')
 .."\n🎮│الالعاب «» "..(redis:get(max..'mute_game'..msg.chat_id_) or 'false')
-.."\n🏞│الصور «» "..(redis:get(max..'mute_photo'..msg.chat_id_) or 'false')
+.."\n🏞│صصصور «» "..(redis:get(max..'mute_photo'..msg.chat_id_) or 'false')
 .."\n🎥│الفيديو «» "..(redis:get(max..'mute_video'..msg.chat_id_) or 'false')
 .."\n🎙│البصمات «» "..(redis:get(max..'mute_audio'..msg.chat_id_) or 'false')
 .."\n🔉│الصوت «» "..(redis:get(max..'mute_voice'..msg.chat_id_) or 'false')

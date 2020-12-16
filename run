@@ -20,22 +20,6 @@ WHITEC='\033[01;91m'
 CNIL='\033[0m'
 Version=`lsb_release -rs | cut -f1 -d"."`
 
-if [ "$Version" == "18" ];then
-echo -e "${GREEN}
-▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇                
-▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇
-▇▇          ▇ @Hskh56   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇
-▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @Hskh56
-▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @Hskh56  ▇▄                 ▇▇                 ▇▇
-▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source MAX BY @Hskh56
-----------------------------------------------------------------------${CNIL}"
-echo -e "${RED}| للاسف لايمكنك تنصيب السورس ع نظام اوبنتو {${Version}} يجب ان يكون على اصدار  اقل مثلا  ${SMAY}14 او 16
-${CNIL}";
-echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source MAX 
-${CNIL}";
-exit;
-fi
-
 
 if [ ! -f "./TG" ]; then
 echo -e "${RED}

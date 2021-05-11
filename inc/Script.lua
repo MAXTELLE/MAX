@@ -628,7 +628,8 @@ end
 
 
 if (MsgText[1] == "رفع منشى" or MsgText[1] == "رفع منشئ") then
-if not msg.malk then return "💥*┃*هذا الامر يخص {المالك و المنشئ الاساسي,المطور,المطور الاساسي} فقط  \n💥" endif not MsgText[2] and msg.reply_id then
+if not msg.malk then return "💥*┃*هذا الامر يخص {المالك و المنشئ الاساسي,المطور,المطور الاساسي} فقط  \n💥" end
+if not MsgText[2] and msg.reply_id then
 GetMsgInfo(msg.chat_id_,msg.reply_id,action_by_reply,{msg=msg,cmd="setmnsha"})
 end
 if MsgText[2] and MsgText[2]:match('^%d+$') then

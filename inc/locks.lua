@@ -1,7 +1,91 @@
 --[[
 
 ]]
----------------Lock ------------------- 
+
+---------------Lock pharsi-------------------
+function lock_pharsi(msg)
+    if not msg.Admin then return "💥 هذا الامر يخص الادمنيه فقط  " end
+    GetUserID(msg.sender_user_id_,function(arg,data)
+    msg = arg.msg 
+    local NameUser   = Hyper_Link_Name(data)
+    if redis:get(max.."lock_pharsi"..msg.chat_id_) then
+    return sendMsg(msg.chat_id_,msg.id_,"تم قفل الفارسيه مسبقأ" ) 
+    else
+    redis:set(max.."lock_pharsi"..msg.chat_id_,true)
+    return sendMsg(msg.chat_id_,msg.id_," 💥┃ لقد قام 〆 "..NameUser.." \n بقفل الفارسيه" ) 
+    end
+    end,{msg=msg})
+    end
+    
+    function unlock_pharsi(msg)
+    if not msg.Admin then return "💥  هذا الامر يخص الادمنيه فقط  " end
+    GetUserID(msg.sender_user_id_,function(arg,data)
+    msg = arg.msg 
+    local NameUser   = Hyper_Link_Name(data)
+    if not redis:get(max.."lock_pharsi"..msg.chat_id_) then
+    return sendMsg(msg.chat_id_,msg.id_,"تم فتح الفارسيه بنجاح " ) 
+    else 
+    redis:del(max.."lock_pharsi"..msg.chat_id_)
+    return sendMsg(msg.chat_id_,msg.id_," 💥┃ لقد قام 〆 "..NameUser.." \n بفتح الفارسيه بنجاح✅ " ) 
+    end
+    end,{msg=msg})
+    end
+    ---------------Lock mmno-------------------
+    function lock_mmno3(msg)
+    if not msg.Admin then return "💥┃ هذا الامر يخص الادمنيه فقط  " end
+    GetUserID(msg.sender_user_id_,function(arg,data)
+    msg = arg.msg 
+    local NameUser   = Hyper_Link_Name(data)
+    if redis:get(max.."lock_mmno3"..msg.chat_id_) then
+    return sendMsg(msg.chat_id_,msg.id_,"💥┃ تم بالتأكيد قفل الفشار    \n💥┃بواسطه ⋙「 "..NameUser.." 」 " ) 
+    else
+    redis:set(max.."lock_mmno3"..msg.chat_id_,true)
+    return sendMsg(msg.chat_id_,msg.id_,"💥┃تم قفل الفشار بنجاح   \n💥┃بواسطه ⋙「 "..NameUser.." 」 " ) 
+    end
+    end,{msg=msg})
+    end
+    
+    function unlock_mmno3(msg)
+    if not msg.Admin then return "💥┃ هذا الامر يخص الادمنيه فقط  " end
+    GetUserID(msg.sender_user_id_,function(arg,data)
+    msg = arg.msg 
+    local NameUser   = Hyper_Link_Name(data)
+    if not redis:get(max.."lock_mmno3"..msg.chat_id_) then
+    return sendMsg(msg.chat_id_,msg.id_,"💥┃تم بالتأكيد فتح الفشار    \n💥┃بواسطه ⋙「 "..NameUser.." 」 " ) 
+    else 
+    redis:del(max.."lock_mmno3"..msg.chat_id_)
+    return sendMsg(msg.chat_id_,msg.id_,"💥┃ تم فتح الفشار بنجاح   \n💥┃ بواسطه ⋙「 "..NameUser.." 」 " ) 
+    end
+    end,{msg=msg})
+    end
+    ---------------Lock editmedia-------------------
+    function lock_edit_media(msg)
+    if not msg.Admin then return "💥┃ هذا الامر يخص الادمنيه فقط  " end
+    GetUserID(msg.sender_user_id_,function(arg,data)
+    msg = arg.msg 
+    local NameUser   = Hyper_Link_Name(data)
+    if redis:get(max.."lock_edit_media"..msg.chat_id_) then
+    return sendMsg(msg.chat_id_,msg.id_,"💥 ┃ تم قفل تعديل الميديا سابقا\n\n💥 ┃ بواسطه ⋙ 「 "..NameUser.." 」 " ) 
+    else
+    redis:set(max.."lock_edit_media"..msg.chat_id_,true)
+    return sendMsg(msg.chat_id_,msg.id_,"💥 ┃ تم قفل تعديل الميديا\n\n💥 ┃ بواسطه ⋙ 「 "..NameUser.." 」 " ) 
+    end
+    end,{msg=msg})
+    end
+    
+    function unlock_edit_media(msg)
+    if not msg.Admin then return "💥┃ هذا الامر يخص الادمنيه فقط  " end
+    GetUserID(msg.sender_user_id_,function(arg,data)
+    msg = arg.msg 
+    local NameUser   = Hyper_Link_Name(data)
+    if not redis:get(max.."lock_edit_media"..msg.chat_id_) then
+    return sendMsg(msg.chat_id_,msg.id_,"💥 ┃ تم فتح تعديل الميديا سابقا\n\n💥 ┃ بواسطه ⋙ 「 "..NameUser.." 」 " ) 
+    else 
+    redis:del(max.."lock_edit_media"..msg.chat_id_)
+    return sendMsg(msg.chat_id_,msg.id_,"💥 ┃ تم فتح تعديل الميديا\n\n💥 ┃ بواسطه ⋙ 「 "..NameUser.." 」 " ) 
+    end
+    end,{msg=msg})
+    end
 function unlock_waring(msg)
 if not msg.Admin then return "💥*│*هذا الامر يخص {الادمن,المدير,المنشئ,المطور} فقط  \n💥" end
 if redis:get(max..'lock_woring'..msg.chat_id_) then 

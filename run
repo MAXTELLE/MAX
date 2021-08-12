@@ -49,7 +49,7 @@ sudo chmod +x ./TG
 if [ "$1" == "R" ] ; then
 while(true) do
 killall -q ./TG
-sudo rm -fr ../.telegram-cli
+rm -fr ../.telegram-cli
 ./TG -s inc/Run.lua --bot=$TOKEN
 done
 else

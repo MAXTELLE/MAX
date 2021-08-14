@@ -52,10 +52,10 @@ fi
 if [ "${GET_INSTALL}" == "Yes" ]; then
 echo -e "
 ${SMAY}>> ${LSAMAY}Source MAX${SMAY} is Already Installed ^_^ .\n${CNIL}"
-sudo luarocks install luautf8
-sudo chmod +x ./run
-sudo chmod +x ./TG
-sudo ./run
+luarocks install luautf8
+chmod +x ./run
+chmod +x ./TG
+./run
 exit;
 fi 
 fi
@@ -113,8 +113,8 @@ if [ "$Version" == "18" ];then
   wget "ibotcorp.com/files/compat-libevent2-5_2.0.21-1ubuntu18_amd64.deb" && sudo dpkg -i compat-libevent2-5_2.0.21-1ubuntu18_amd64.deb
   rm compat-libevent2-5_2.0.21-1ubuntu18_amd64.deb
 fi
-sudo chmod +x TG
-sudo chmod +x run
+chmod +x TG
+chmod +x run
 chmod +x ./run
 echo -e "\n
 ${SMAY}>> Installation ${LSAMAY}Source MAX${SMAY} Completed ^_^ .\n

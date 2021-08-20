@@ -21,23 +21,6 @@ CNIL='\033[0m'
 
 Version=`lsb_release -rs | cut -f1 -d"."`
 
-if [ "$Version" == "18" ];then
-echo -e "${SMAY}\n"
-echo -e " ▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇"
-echo -e " ▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇"
-echo -e " ▇▇          ▇ @Hskh56   ▇         ▇▇            ▄▇▄▄▄▄▄▇▄                               ▇▇ ▇▇"
-echo -e " ▇▇             ▇             ▇             ▇▇        ▄▇                            ▇▄                          ▇▇ ▇▇ ¦ Dev : @Hskh56"
-echo -e " ▇▇                ▇       ▇                ▇▇      ▄▇ ¦ Dev : @Hskh56  ▇▄                 ▇▇                 ▇▇"
-echo -e " ▇▇                   ▇▇                    ▇▇     ▄▇                                    ▇▄      ▇▇                                  ▇▇¦ Source @Hskh56"
-echo -e " ----------------------------------------------------------------------"
-echo -e "${CNIL}"
-echo -e "${RED}| للاسف لايمكنك تنصيب السورس ع نظام اوبنتو {${Version}} يجب ان يكون على اصدار  اقل مثلا  ${SMAY}14 او 16
-${CNIL}";
-echo -e "${RED}| Sorry Canot install Source on Ubuntu {${Version}} Please install system To Ubuntu ${SMAY}14 or 16 ${RED} For Run The Source MAX 
-${CNIL}";
-exit;
-fi
-
 echo -e "${SMAY}\n"
 echo -e " ▇▇▇                                       ▇▇▇               ▄▇▇▇▇▇▄                 ▇▇                                    ▇▇"
 echo -e " ▇▇        ▇                        ▇       ▇▇             ▄▇                ▇▄                        ▇▇                  ▇▇"
@@ -69,10 +52,10 @@ fi
 if [ "${GET_INSTALL}" == "Yes" ]; then
 echo -e "
 ${SMAY}>> ${LSAMAY}Source MAX${SMAY} is Already Installed ^_^ .\n${CNIL}"
-sudo luarocks install luautf8
-sudo chmod +x ./run
-sudo chmod +x ./TG
-sudo ./run
+luarocks install luautf8
+chmod +x ./run
+chmod +x ./TG
+./run
 exit;
 fi 
 fi
@@ -124,8 +107,14 @@ sudo rm -fr ./luarocks-2.4.3
 sudo rm -fr ./luarocks-2.4.3.tar.gz
 echo -e "${WHITB}\n¦ Convert TimeZone To Asia/Baghdad  ... \n${CNIL}"
 sudo timedatectl set-timezone Asia/Baghdad
-sudo chmod +x TG
-sudo chmod +x run
+if [ "$Version" == "18" ];then
+  echo -e "${WHITB}\n¦ Installing depedencies for ubuntu 18  ... \n${CNIL}"
+  cd /lib/x86_64-linux-gnu/ && sudo ln -s libreadline.so.7.0 libreadline.so.6
+  wget "ibotcorp.com/files/compat-libevent2-5_2.0.21-1ubuntu18_amd64.deb" && sudo dpkg -i compat-libevent2-5_2.0.21-1ubuntu18_amd64.deb
+  rm compat-libevent2-5_2.0.21-1ubuntu18_amd64.deb
+fi
+chmod +x TG
+chmod +x run
 chmod +x ./run
 echo -e "\n
 ${SMAY}>> Installation ${LSAMAY}Source MAX${SMAY} Completed ^_^ .\n
